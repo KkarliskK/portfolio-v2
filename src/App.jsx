@@ -47,7 +47,11 @@ export default function ModernPortfolio() {
       description: "Complete website redesign with modern UI/UX, responsive design, and enhanced user experience for tennis club management.",
       type: "Full Redesign",
       tags: ["Frontend", "UI/UX", "Responsive", "Sports"],
-      gradient: "from-emerald-500 to-teal-600",
+      images: [
+        "wmts_landing.png",
+      ],
+      backgroundImage: "wmts_landing.png", 
+      gradient: "from-emerald-500 to-teal-600", 
       featured: true
     },
     {
@@ -56,6 +60,10 @@ export default function ModernPortfolio() {
       description: "Dynamic product listings with advanced carousel functionality, integrated blog system, and seamless booking experience.",
       type: "Feature Development",
       tags: ["Frontend", "Carousel", "Blog System", "Travel"],
+      images: [
+        "wws_landing.png",
+      ],
+      backgroundImage: "wws_landing.png", 
       gradient: "from-blue-500 to-purple-600",
       featured: true
     },
@@ -65,6 +73,10 @@ export default function ModernPortfolio() {
       description: "Advanced ticketing system with secure payment processing, supporting 4 different client types and real-time booking management.",
       type: "Full Stack",
       tags: ["Payment", "Ticketing", "Backend", "E-commerce"],
+      images: [
+        "vissa_landing.png",
+      ],
+      backgroundImage: "vissa_landing.png", 
       gradient: "from-rose-500 to-pink-600",
       featured: true
     },
@@ -74,6 +86,10 @@ export default function ModernPortfolio() {
       description: "Complete website built with React, Inertia.js, and Laravel Breeze for seamless SPA experience with robust authentication.",
       type: "Full Stack Build",
       tags: ["React", "Laravel", "Inertia", "SPA"],
+      images: [
+        "wmts_landing.png",
+      ],
+      backgroundImage: "", 
       gradient: "from-violet-500 to-purple-600",
       featured: true
     },
@@ -83,6 +99,10 @@ export default function ModernPortfolio() {
       description: "Payment system integration with GDPR-compliant cookie management and advanced security protocols.",
       type: "System Integration", 
       tags: ["Payment", "GDPR", "Security", "Integration"],
+      images: [
+        "expoint_landing.png",
+      ],
+      backgroundImage: "expoint_landing.png", 
       gradient: "from-orange-500 to-red-600",
       featured: TurtleIcon
     },
@@ -92,6 +112,10 @@ export default function ModernPortfolio() {
       description: "Modern page redesign focusing on enhanced user experience, performance optimization, and mobile-first approach.",
       type: "Redesign",
       tags: ["UI/UX", "Frontend", "Performance", "Mobile"],
+      images: [
+        "axy_landing.png",
+      ],
+      backgroundImage: "axy_landing.png", 
       gradient: "from-cyan-500 to-blue-600",
       featured: true
     }
@@ -340,9 +364,22 @@ export default function ModernPortfolio() {
                 key={index}
                 className="p-6 transition-all duration-500 border group bg-white/5 backdrop-blur-sm rounded-xl border-white/10 hover:border-purple-400/50 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
               >
-                <div className={`w-full h-48 bg-gradient-to-br ${project.gradient} rounded-lg mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 relative overflow-hidden`}>
-                  <Globe size={48} className="z-10 text-white" />
-                  <div className="absolute inset-0 transition-colors bg-black/20 group-hover:bg-black/10"></div>
+                <div 
+                  className="relative flex items-center justify-center w-full h-48 mb-6 overflow-hidden transition-transform duration-300 bg-center bg-cover rounded-lg group-hover:scale-105"
+                  style={{
+                    backgroundImage: project.backgroundImage 
+                      ? `url('/img/${project.backgroundImage}')` 
+                      : undefined,
+                    background: !project.backgroundImage 
+                      ? `linear-gradient(to bottom right, var(--gradient-from), var(--gradient-to))` 
+                      : undefined
+                  }}
+                >
+                  {/* Overlay for better readability */}
+                  {project.backgroundImage && (
+                    <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  )}
+                  {/* Your content here */}
                 </div>
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="text-xl font-semibold transition-colors group-hover:text-purple-400">{project.title}</h3>
